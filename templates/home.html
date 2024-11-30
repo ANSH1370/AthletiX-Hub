@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthletiX Hub - Home</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background-color: #141414;
+            overflow-x: hidden;
+        }
+
+        /* Banner Section */
+        .banner {
+            position: relative;
+            height: 80vh;
+            background: url('back.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #FF6600;
+            animation: fadeInUp 1.5s ease;
+        }
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            animation: fadeInUp 2s ease;
+        }
+        .banner a {
+            padding: 15px 30px;
+            text-decoration:None;
+            font-size: 16px;
+            color: #fff;
+            background-color: #FF6600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .banner button:hover {
+            background-color: #FF4500;
+        }
+
+        /* Transparent Background Image */
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('back.jpg'); /* Replace with your transparent image */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #1f1f1f;
+        }
+        .features h2 {
+            font-size: 36px;
+            color: #FF6600;
+            margin-bottom: 30px;
+        }
+        .features-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            flex: 1;
+            max-width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        .feature-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .feature-item h3 {
+            margin-top: 15px;
+            color: #FF6600;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #1f1f1f;
+        }
+        .products h2 {
+            font-size: 36px;
+            color: #FF6600;
+            margin-bottom: 30px;
+        }
+
+        /* Product Slider */
+        .product-slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .product-slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .product-item {
+            min-width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+        .product-item:hover {
+            transform: translateY(-10px);
+        }
+        .product-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-item h3 {
+            margin-top: 15px;
+            color: #FF6600;
+        }
+        .product-item p {
+            color: #ccc;
+        }
+        .product-item span {
+            display: block;
+            margin-top: 5px;
+            font-size: 18px;
+            color: #FF6600;
+        }
+
+        /* Navigation Buttons */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .slider-nav button {
+            background: rgba(255, 102, 0, 0.8);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .slider-nav button:hover {
+            background: rgba(255, 102, 0, 1);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 50px 20px;
+            background-color: #141414;
+            color: white;
+            text-align: center;
+        }
+        .testimonials h2 {
+            font-size: 36px;
+            color: #FF6600;
+            margin-bottom: 30px;
+        }
+        .testimonial-item {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .testimonial-item p {
+            font-style: italic;
+        }
+        .testimonial-item h4 {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #FF6600;
+        }
+
+        /* Footer Section */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #1f1f1f;
+            color: #ccc;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .footer a {
+            color: #FF6600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #FF4500;
+        }
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FF6600;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+            font-size: 16px;
+            z-index: 10;
+        }
+        .chat-widget:hover {
+            background-color: #FF4500;
+        }
+
+        /* Chatbot Iframe */
+        .chatbot-iframe {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 400px;
+            height: 450px;
+            border: none;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Close Button for Chatbot */
+        .close-chatbot {
+            display: none;
+            position: fixed;
+            bottom: 535px;
+            right: 22px;
+            background-color: #FF6600;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Welcome to AthletiX Hub</h1>
+            <p>Your Ultimate Source for Premium Supplements</p>
+            <a href="#ansh">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Our Best Sellers</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <img src="whey.jpg" alt="Product 1">
+                <h3>Whey Protein Powder</h3>
+                <p>High-quality protein powder to fuel your muscles.</p>
+            </div>
+            <div class="feature-item">
+                <img src="bcaa.jpg" alt="Product 2">
+                <h3>BCAAs</h3>
+                <p>Essential amino acids for muscle recovery and endurance.</p>
+            </div>
+            <div class="feature-item">
+                <img src="pre.jpg" alt="Product 3">
+                <h3>Pre-Workout</h3>
+                <p>Boost your energy and focus before hitting the gym.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="ansh">
+        <h2>Our Products</h2>
+        <div class="product-slider">
+            <div class="product-slider-track" id="sliderTrack">
+                <div class="product-item">
+                    <img src="whey.jpg" alt="Whey Protein Powder">
+                    <h3>Whey Protein Powder</h3>
+                    <p>Whey and Casein</p>
+                    <span>₹4500</span>
+                </div>
+                <div class="product-item">
+                    <img src="casin.jpg" alt="Casein Protein Powder">
+                    <h3>Casein Protein Powder</h3>
+                    <p>Whey and Casein</p>
+                    <span>₹4500</span>
+                </div>
+                <div class="product-item">
+                    <img src="bcaa.jpg" alt="BCAAs">
+                    <h3>BCAAs</h3>
+                    <p>Branched-Chain Amino Acids</p>
+                    <span>₹1500</span>
+                </div>
+                <div class="product-item">
+                    <img src="creatine.jpg" alt="Creatine Monohydrate">
+                    <h3>Creatine Monohydrate</h3>
+                    <p>Enhances strength and performance</p>
+                    <span>₹2000</span>
+                </div>
+                <div class="product-item">
+                    <img src="pre.jpg" alt="Pre-Workout Supplements">
+                    <h3>Pre-Workout Supplements</h3>
+                    <p>Get the energy you need</p>
+                    <span>₹1800</span>
+                </div>
+                <div class="product-item">
+                    <img src="peanut.jpg" alt="Peanut Butter">
+                    <h3>Peanut Butter</h3>
+                    <p>Delicious and nutritious</p>
+                    <span>₹500</span>
+                </div>
+                <div class="product-item">
+                    <img src="multi.jpg" alt="MultiVitamins">
+                    <h3>MultiVitamins</h3>
+                    <p>Essential nutrients for overall health</p>
+                    <span>₹1300</span>
+                </div>
+                <div class="product-item">
+                    <img src="oil.jpg" alt="Omega-3 Fatty Acids">
+                    <h3>Omega-3 Fatty Acids</h3>
+                    <p>Heart health support</p>
+                    <span>₹900</span>
+                </div>
+                <div class="product-item">
+                    <img src="l.jpg" alt="L-Arginine">
+                    <h3>L-Arginine</h3>
+                    <p>Amino acid for better blood flow</p>
+                    <span>₹1200</span>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button id="prevBtn">❮</button>
+                <button id="nextBtn">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-item">
+            <p>"The best supplements I've ever used! Highly recommend AthletiX Hub."</p>
+            <h4>- Ansh Mangukiya</h4>
+        </div>
+        <div class="testimonial-item">
+            <p>"Great quality and amazing customer service!"</p>
+            <h4>- Virat Kohli.</h4>
+        </div>
+        <div class="testimonial-item">
+            <p>"My go-to place for all my fitness needs."</p>
+            <h4>- Dash Yangi.</h4>
+        </div>
+    </section>
+
+<div class="chat-widget" onclick="toggleChat()">Talk to Fit Boss</div>
+
+    <!-- Chatbot Iframe -->
+    <iframe
+        class="chatbot-iframe"
+        allow="microphone;"
+        src="https://console.dialogflow.com/api-client/demo/embedded/62eb0e93-f5a3-40f6-8363-2da716d64c39">
+    </iframe>
+
+    <!-- Close Button for Chatbot -->
+    <div class="close-chatbot" onclick="toggleChat()">Close Chat</div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 AthletiX Hub. All rights reserved.</p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        <p>Follow us on <a href="https://instagram.com">Instagram</a>, <a href="https://facebook.com">Facebook</a>, <a href="https://twitter.com">Twitter</a></p>
+    </footer>
+
+    <script>
+        const sliderTrack = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.product-item');
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+
+        function updateSliderPosition() {
+            const slideWidth = slides[0].clientWidth;
+            sliderTrack.style.transform = 'translateX(' + (-slideWidth * currentIndex) + 'px)';
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSliderPosition();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSliderPosition();
+        });
+
+        // Initialize slider position
+        updateSliderPosition();
+
+         function toggleChat() {
+            const chatbotIframe = document.querySelector('.chatbot-iframe');
+            const closeButton = document.querySelector('.close-chatbot');
+
+            // Toggle display of iframe and close button
+            if (chatbotIframe.style.display === 'none') {
+                chatbotIframe.style.display = 'block';
+                closeButton.style.display = 'block';
+            } else {
+                chatbotIframe.style.display = 'none';
+                closeButton.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
